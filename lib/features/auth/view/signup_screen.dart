@@ -21,9 +21,9 @@ class _SignupScreenState extends State<SignupScreen> {
     if (!_formKey.currentState!.validate()) return;
 
     if (_passwordController.text != _confirmPasswordController.text) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Passwords do not match')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('Passwords do not match')));
       return;
     }
 
@@ -34,7 +34,6 @@ class _SignupScreenState extends State<SignupScreen> {
         _passwordController.text.trim(),
       );
       if (mounted) {
-        // If "Confirm Email" is disabled in Supabase, the user is logged in immediately.
         Navigator.pushReplacementNamed(context, AppRoutes.task);
       }
     } catch (e) {
@@ -106,20 +105,31 @@ class _SignupScreenState extends State<SignupScreen> {
                     style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       labelText: 'Email',
-                      labelStyle: TextStyle(color: Colors.white.withOpacity(0.7)),
-                      prefixIcon: const Icon(Icons.email_outlined, color: Colors.white70),
+                      labelStyle: TextStyle(
+                        color: Colors.white.withOpacity(0.7),
+                      ),
+                      prefixIcon: const Icon(
+                        Icons.email_outlined,
+                        color: Colors.white70,
+                      ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                         borderSide: const BorderSide(color: Colors.white24),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
-                        borderSide: const BorderSide(color: Color.fromRGBO(75, 71, 184, 1)),
+                        borderSide: const BorderSide(
+                          color: Color.fromRGBO(75, 71, 184, 1),
+                        ),
                       ),
                       filled: true,
                       fillColor: Colors.white.withOpacity(0.05),
                     ),
-                    validator: (value) => value == null || !value.contains('@') ? 'Enter a valid email' : null,
+                    validator:
+                        (value) =>
+                            value == null || !value.contains('@')
+                                ? 'Enter a valid email'
+                                : null,
                   ),
                   const SizedBox(height: 20),
                   TextFormField(
@@ -128,20 +138,31 @@ class _SignupScreenState extends State<SignupScreen> {
                     style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       labelText: 'Password',
-                      labelStyle: TextStyle(color: Colors.white.withOpacity(0.7)),
-                      prefixIcon: const Icon(Icons.lock_outline, color: Colors.white70),
+                      labelStyle: TextStyle(
+                        color: Colors.white.withOpacity(0.7),
+                      ),
+                      prefixIcon: const Icon(
+                        Icons.lock_outline,
+                        color: Colors.white70,
+                      ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                         borderSide: const BorderSide(color: Colors.white24),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
-                        borderSide: const BorderSide(color: Color.fromRGBO(75, 71, 184, 1)),
+                        borderSide: const BorderSide(
+                          color: Color.fromRGBO(75, 71, 184, 1),
+                        ),
                       ),
                       filled: true,
                       fillColor: Colors.white.withOpacity(0.05),
                     ),
-                    validator: (value) => value == null || value.length < 6 ? 'Password must be at least 6 characters' : null,
+                    validator:
+                        (value) =>
+                            value == null || value.length < 6
+                                ? 'Password must be at least 6 characters'
+                                : null,
                   ),
                   const SizedBox(height: 20),
                   TextFormField(
@@ -150,20 +171,31 @@ class _SignupScreenState extends State<SignupScreen> {
                     style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       labelText: 'Confirm Password',
-                      labelStyle: TextStyle(color: Colors.white.withOpacity(0.7)),
-                      prefixIcon: const Icon(Icons.lock_outline, color: Colors.white70),
+                      labelStyle: TextStyle(
+                        color: Colors.white.withOpacity(0.7),
+                      ),
+                      prefixIcon: const Icon(
+                        Icons.lock_outline,
+                        color: Colors.white70,
+                      ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                         borderSide: const BorderSide(color: Colors.white24),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
-                        borderSide: const BorderSide(color: Color.fromRGBO(75, 71, 184, 1)),
+                        borderSide: const BorderSide(
+                          color: Color.fromRGBO(75, 71, 184, 1),
+                        ),
                       ),
                       filled: true,
                       fillColor: Colors.white.withOpacity(0.05),
                     ),
-                    validator: (value) => value == null || value.isEmpty ? 'Please confirm your password' : null,
+                    validator:
+                        (value) =>
+                            value == null || value.isEmpty
+                                ? 'Please confirm your password'
+                                : null,
                   ),
                   const SizedBox(height: 32),
                   Container(
@@ -182,14 +214,23 @@ class _SignupScreenState extends State<SignupScreen> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.transparent,
                         shadowColor: Colors.transparent,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
                       ),
-                      child: _isLoading
-                          ? const CircularProgressIndicator(color: Colors.white)
-                          : const Text(
-                              'Sign Up',
-                              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
-                            ),
+                      child:
+                          _isLoading
+                              ? const CircularProgressIndicator(
+                                color: Colors.white,
+                              )
+                              : const Text(
+                                'Sign Up',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
                     ),
                   ),
                   const SizedBox(height: 24),
